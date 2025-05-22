@@ -1,195 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>💻 Quizz da Programação </title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f8ff;
-      color: #003366;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      color: #0055aa;
-      font-size: 2em;
-      margin-bottom: 30px;
-    }
-
-    .pergunta {
-      margin: 20px 0;
-      padding: 15px;
-      border: 2px solid #0055aa;
-      border-radius: 10px;
-      background-color: #ffffff;
-      transition: 0.3s;
-    }
-
-    .pergunta.correta {
-      background-color: #d2f8e1;
-      border-color: #00c853;
-    }
-
-    .pergunta.errada {
-      background-color: #ffdde0;
-      border-color: #d50000;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-
-    button {
-      background-color: #0055aa;
-      color: #fff;
-      font-weight: bold;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #0077cc;
-    }
-
-    #mensagem-encerrada {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #007744;
-    }
-
-    #pontuacao-barra {
-      width: 100%;
-      height: 20px;
-      background-color: #e0e0e0;
-      border-radius: 10px;
-      margin-top: 10px;
-      overflow: hidden;
-      display: none;
-    }
-
-    #barra {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(to right, #00c3ff, #0055aa);
-      transition: width 1s ease-out;
-    }
-
-    #reiniciar {
-      display: none;
-      margin-top: 30px;
-      background-color: #999;
-    }
-
-    #reiniciar:hover {
-      background-color: #666;
-    }
-
-    .progress-text {
-      text-align: center;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #333;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SENAI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="header">
+    <h1>SENAI</h1>
+    <h1>PROGRAMADOR DE SISTEMAS</h1>
+  </div>
 
-  <h1>💻 Quizz da Programação</h1>
+  <div class="nav">
+    <a href="visaosegura.html">Visão Segura</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="sistsolar.html">Sistema Solar</a>
+  </div>
 
-  <form id="formulario" data-bloqueado="false">
-    <div id="perguntas-container"></div>
-    <button type="submit">🚀 Enviar Respostas</button>
-  </form>
+  <div class="content">
+    <div id="motivo" class="section">
+      <h2>👩‍💻 Turma de Programação 2025 - SENAI</h2>
+      <p>
+        Sejam muito bem-vindos ao nosso site! Aqui você vai conhecer a galera da Turma de Programação 2025 do SENAI — um grupo cheio de mentes criativas, curiosas e prontas para o futuro.
+        Somos uma turma unida, cheia de personalidade, ideias inovadoras e, claro, muitos cafés na veia ☕. Cada um tem um estilo único, mas o que nos conecta é a criatividade com a tecnologia e a vontade de transformar o mundo com código.
+        Neste espaço, você vai encontrar um pouco das nossas ideias, projetos, sonhos e até alguns bugs (porque ninguém é de ferro, né? 😅).
+        Preparado pra conhecer a próxima geração de devs? Então se joga!
+      </p>
+      <img
+        src="assets/prgramacao.jpg"
+        alt="Turma SENAI 2025"
+        style="max-width: 60%; height: auto; display: block; margin: 9px auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);"
+      />
+    </div>
 
-  <div id="mensagem-encerrada"></div>
-  <div id="pontuacao-barra"><div id="barra"></div></div>
-  <div class="progress-text" id="progressText"></div>
-  <button id="reiniciar">🔁 Tentar Novamente</button>
+    <div id="objetivo" class="section">
+      <h2>💡 Nossos Projetos</h2>
+      <p>
+        Aqui no SENAI, a gente não só aprende a programar... a gente coloca a mão no código e transforma ideias em realidade! 🚀
+        Durante o curso, desenvolvemos vários projetos que misturam criatividade, lógica e muito trabalho em equipe. Desde sites e aplicativos até sistemas completos, cada trabalho é uma oportunidade de testar nossos conhecimentos e crescer como desenvolvedores.
+      </p>
+      <ul>
+        <li>Sites responsivos com HTML, CSS e JavaScript;</li>
+        <li>Aplicações interativas com banco de dados;</li>
+        <li>Soluções para problemas reais, criadas com pensamento crítico e inovação;</li>
+        <li>Trabalhos em grupo que ensinam mais que código: ensinam colaboração e resiliência.</li>
+      </ul>
+      <p>
+        Cada projeto carrega nossa identidade, nosso esforço e aquele toque de “só quem é dev entende”. Errando, corrigindo, testando de novo... e no fim, criando coisas incríveis.
+        Confere aí e se prepara pra se surpreender com o talento dessa galera! 😎👾
+      </p>
+    </div>
 
-  <script>
-    const todasPerguntas = [
-      { texto: "Mais de 400 motoristas dormiram ao volante e causaram acidentes em Santa Catarina entre 2021 e 2023.JavaScript é usado para tornar páginas web interativas.", resposta: "V" },
-      { texto: "O sistema inteligente do projeto detecta sinais de cansaço pelo olhar do motorista e desacelera o carro automaticamente.", resposta: "V" },
-      { texto: "Carros fabricados antes dos anos 2000 geralmente já possuem detectores de fadiga de série.", resposta: "F" },
-      { texto: "Júpiter é o menor planeta do Sistema Solar.", resposta: "F" },
-      { texto: "Saturno é famoso pelos seus anéis quadrados", resposta: "F" },
-      { texto: "O sol é um planeta do sistema solar?", resposta: "V" },
-      { texto: "Marte é chamado de Planeta Vermelho por causa da sua cor avermelhada.", resposta: "V" },
-      { texto: "Python não permite usar números em cálculos.", resposta: "F" },
-      { texto: "Console.log é usado em Python para mostrar mensagens.", resposta: "F" },
-      { texto: "Lógica de programação é fundamental para escrever códigos eficientes.", resposta: "V" }
-    ];
+    <div id="ideia" class="section">
+      <h2>🚀 Destaques dos Projetos</h2>
+      <p>
+        Durante o curso, desenvolvemos três projetos principais que mostram nosso compromisso com tecnologia, criatividade e impacto social:
+      </p>
 
-    const perguntasSelecionadas = [...todasPerguntas];
-    const container = document.getElementById("perguntas-container");
-    const progressText = document.getElementById("progressText");
+      <h3>🔒 Direção Segura</h3>
+      <p>
+        Um sistema com sensores de biometria ocular que detecta sinais de sono no motorista. Se ele estiver com sono, o veículo desacelera automaticamente. Criado como solução acessível para reduzir acidentes nas estradas e salvar vidas.
+      </p>
 
-    perguntasSelecionadas.forEach((p, i) => {
-      const div = document.createElement("div");
-      div.classList.add("pergunta");
-      div.id = `pergunta-${i}`;
-      div.innerHTML = `
-        <p><strong>${i + 1}.</strong> ${p.texto}</p>
-        <label><input type="radio" name="q${i}" value="V" required> Verdadeiro</label>
-        <label><input type="radio" name="q${i}" value="F"> Falso</label>
-      `;
-      container.appendChild(div);
-    });
+      <h3>🌍 Sistema Solar 2D</h3>
+      <p>
+        Um programa interativo que mostra os planetas e suas características de forma visual e divertida. Ideal para ajudar alunos e professores no ensino de astronomia com mais leveza e interatividade.
+      </p>
 
-    const formulario = document.getElementById("formulario");
-    const mensagemEncerrada = document.getElementById("mensagem-encerrada");
-    const barra = document.getElementById("barra");
-    const pontuacaoBarra = document.getElementById("pontuacao-barra");
-    const reiniciar = document.getElementById("reiniciar");
+      <h3>🧠 Quiz Interativo</h3>
+      <p>
+        Um jogo de perguntas e respostas para testar os conhecimentos do público sobre os projetos. Quem acertar tudo pode até ganhar um prêmio! É aprendizado com diversão garantida!
+      </p>
+    </div>
 
-    formulario.addEventListener("submit", function (e) {
-      e.preventDefault();
+    <div id="referencias" class="section">
+      <h2>🔍 Referências / Fontes de Informação</h2>
+      <ul>
+        <li>
+          <a href="https://wh3.com.br/noticia/244196/mais-de-400-motoristas-dormiram-ao-volante-e-causaram-acidentes-em-sc-nos-ultimos-dois-anos-.html" target="_blank">
+            NSC Total / PRF
+          </a>
+        </li>
+        <li>
+          <a href="https://www.clicrdc.com.br/seguranca/prf-em-sc-divulga-balanco-de-acidentes-e-operacoes-em-2024/" target="_blank">
+            ClicRDC / PRF-SC
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-      let pontos = 0;
-      perguntasSelecionadas.forEach((p, i) => {
-        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
-        const div = document.getElementById(`pergunta-${i}`);
-        if (resposta && resposta.value === p.resposta) {
-          pontos++;
-          div.classList.add("correta");
-        } else {
-          div.classList.add("errada");
-        }
-      });
-
-      const porcentagem = Math.round((pontos / perguntasSelecionadas.length) * 100);
-      mensagemEncerrada.innerHTML = `✅ Você acertou <strong>${pontos}</strong> de <strong>${perguntasSelecionadas.length}</strong> (<strong>${porcentagem}%</strong>)`;
-      mensagemEncerrada.style.display = "block";
-      barra.style.width = `${porcentagem}%`;
-      pontuacaoBarra.style.display = "block";
-
-      progressText.textContent = porcentagem >= 80
-        ? "🔥 Codando como um(a) pro!"
-        : porcentagem >= 50
-        ? "⚡ Tá no caminho certo, continua assim!"
-        : "🧠 Bora revisar mais um pouquinho!";
-
-      bloquearFormulario();
-    });
-
-    function bloquearFormulario() {
-      formulario.querySelectorAll("input[type=radio]").forEach(el => el.disabled = true);
-      formulario.querySelector("button[type=submit]").disabled = true;
-      reiniciar.style.display = "block";
-    }
-
-    reiniciar.addEventListener("click", () => {
-      location.reload();
-    });
-  </script>
+  <footer>
+    <div>&copy; 2025 - Projeto AI - Programador de Sistemas - SENAI Videira</div>
+  </footer>
 </body>
 </html>
