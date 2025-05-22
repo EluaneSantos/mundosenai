@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>💙 Quiz:PROGRAMADOR DE SISTEMAS (V/F)</title>
+  <title> Quizz da Programação</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -114,7 +114,7 @@
   </style>
 </head>
 <body>
-  <h1>🧠 Desafio V/F: Lógica e Python</h1>
+  <h1>💙 Quizz da Programação</h1>
   <form id="quiz-form">
     <div id="quiz-container"></div>
     <button type="submit">🚀 Finalizar Quiz</button>
@@ -122,7 +122,8 @@
   <div id="pontuacao"></div>
   <div id="barra-progresso"><div id="barra"></div></div>
   <button id="restart">🔁 Tentar de Novo</button>
- <script>
+
+  <script>
     const todasPerguntas = [
       { texto: "Mais de 400 motoristas dormiram ao volante...", resposta: "V" },
       { texto: "Os acidentes nas rodovias federais aumentaram 14%...", resposta: "V" },
@@ -138,7 +139,6 @@
       { texto: "Sistema só analisa o volante, não o motorista...", resposta: "F" },
       { texto: "O projeto visa segurança para todos motoristas...", resposta: "V" },
       { texto: "Carros modernos já salvam vidas com essa tech...", resposta: "V" },
-  
     ];
 
     const quizContainer = document.getElementById("quiz-container");
@@ -146,7 +146,7 @@
     const barra = document.getElementById("barra");
     const restartBtn = document.getElementById("restart");
 
-    perguntas.forEach((p, i) => {
+    todasPerguntas.forEach((p, i) => {
       const div = document.createElement("div");
       div.classList.add("pergunta");
       div.id = `pergunta-${i}`;
@@ -161,7 +161,7 @@
     document.getElementById("quiz-form").addEventListener("submit", function (e) {
       e.preventDefault();
       let pontos = 0;
-      perguntas.forEach((p, i) => {
+      todasPerguntas.forEach((p, i) => {
         const resposta = document.querySelector(`input[name="q${i}"]:checked`);
         const div = document.getElementById(`pergunta-${i}`);
         if (resposta.value === p.resposta) {
@@ -172,8 +172,8 @@
         }
       });
 
-      const porcentagem = Math.round((pontos / perguntas.length) * 100);
-      pontuacaoDiv.innerHTML = `💯 Acertos: <strong>${pontos}</strong> de ${perguntas.length} (${porcentagem}%)`;
+      const porcentagem = Math.round((pontos / todasPerguntas.length) * 100);
+      pontuacaoDiv.innerHTML = `💯 Acertos: <strong>${pontos}</strong> de ${todasPerguntas.length} (${porcentagem}%)`;
       barra.style.width = `${porcentagem}%`;
 
       this.querySelectorAll("input").forEach(i => i.disabled = true);
