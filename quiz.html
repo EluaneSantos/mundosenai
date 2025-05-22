@@ -2,220 +2,228 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quizz da Programação</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
     body {
-      background-color: #ffffff;
-      color: #000;
-    }
-
-    .header {
-      background-color: #003366;
-      color: white;
-      text-align: center;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(to right, #e0f7ff, #ffffff);
+      color: #002b5e;
       padding: 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    .nav {
-      background-color: #006699;
-      padding: 10px;
+    /* Estilo do cabeçalho com fundo azul */
+    .header {
       text-align: center;
+      margin-bottom: 30px;
+      background-color: #0047ab; /* Fundo azul */
+      padding: 20px;
+      border-radius: 10px; /* Bordas arredondadas */
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      color: white; /* Cor branca para o texto */
+    }
+
+    .header h1:first-child {
+      font-size: 3em;
+    }
+
+    /* Estilo da navegação */
+    .nav {
+      background-color: #0047ab;
+      padding: 10px 0;
+      text-align: center;
+      margin-bottom: 20px;
+      border-radius: 10px;
     }
 
     .nav a {
       color: white;
-      margin: 0 15px;
       text-decoration: none;
-      font-weight: bold;
+      padding: 10px 20px;
+      margin: 0 15px;
+      font-size: 1.2em;
+      border-radius: 5px;
+      transition: background-color 0.3s;
     }
 
     .nav a:hover {
-      text-decoration: underline;
+      background-color: #0066cc;
     }
 
-    .content {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
+    /* Estilo das perguntas */
     .pergunta {
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 5px;
-      background-color: #f4f4f4;
+      background: #ffffffcc;
+      border: 2px solid #0077cc;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 18px 0;
+      box-shadow: 2px 2px 10px #d6eaf8;
     }
 
-    .pergunta.correta {
-      border: 2px solid green;
-    }
-
-    .pergunta.errada {
-      border: 2px solid red;
+    .pergunta input[type="radio"] {
+      margin-right: 10px;
     }
 
     label {
       display: block;
-      margin: 5px 0;
+      margin-top: 10px;
+      cursor: pointer;
     }
 
     button {
       display: block;
-      width: 100%;
-      padding: 10px;
-      margin-top: 20px;
-      background-color: #003366;
+      margin: 25px auto;
+      background-color: #0047ab;
       color: white;
+      font-weight: bold;
+      padding: 12px 25px;
       border: none;
-      border-radius: 5px;
-      font-size: 16px;
+      border-radius: 10px;
       cursor: pointer;
+      font-size: 1.1em;
     }
 
     button:hover {
-      background-color: #005288;
+      background-color: #0066cc;
     }
 
     #pontuacao {
       text-align: center;
+      font-size: 1.3em;
+      font-weight: bold;
       margin-top: 20px;
-      font-size: 18px;
     }
 
-    #barra-progresso {
+    /* Estilos para os pontos de interrogação */
+    .pontos-interrogacao {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 20px;
-      background-color: #ccc;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 20px;
-    }
-
-    #barra {
       height: 100%;
-      background-color: #4CAF50;
-      width: 0%;
+      pointer-events: none;
     }
 
-    #restart {
-      display: none;
-      margin-top: 10px;
+    .ponto {
+      position: absolute;
+      font-size: 3rem;
+      color: rgba(0, 0, 255, 0.5);
+      animation: flutuar 5s infinite;
     }
 
-    footer {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 50px;
+    .ponto:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .ponto:nth-child(2) { left: 30%; animation-delay: 1s; }
+    .ponto:nth-child(3) { left: 50%; animation-delay: 2s; }
+    .ponto:nth-child(4) { left: 70%; animation-delay: 3s; }
+    .ponto:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+    @keyframes flutuar {
+      0% {
+        top: 0;
+        opacity: 0.5;
+        transform: translateY(0);
+      }
+      50% {
+        top: 40%;
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+      100% {
+        top: 100%;
+        opacity: 0.5;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Cabeçalho com fundo azul -->
   <div class="header">
     <h1>SENAI</h1>
     <h1>PROGRAMADOR DE SISTEMAS</h1>
   </div>
 
+  <!-- Barra de Navegação -->
   <div class="nav">
-    <a href="index.html"> Home </a>
-    <a href="geolocalizador.html"> Geolocalizador</a>
+    <a href="index.html">Home</a>
+    <a href="geolocalizador.html">Geolocalizador</a>
     <a href="visaosegura.html">Visão Segura</a>
     <a href="quiz.html">Quiz</a>
     <a href="sistsolar.html">Sistema Solar</a>
   </div>
 
-  <div class="content">
-    <h1>💙 Quizz da Programação</h1>
-    <form id="quiz-form">
-      <div id="quiz-container"></div>
-      <button type="submit">🚀 Finalizar Quiz</button>
-    </form>
-    <div id="pontuacao"></div>
-    <div id="barra-progresso"><div id="barra"></div></div>
-    <button id="restart">🔁 Tentar de Novo</button>
+  <h1>💙 Quizz da Programação</h1>
+  <form action="resultado.html" method="post">
+    <!-- Perguntas 1 a 5 -->
+    <div class="pergunta">
+      <p><strong>1.</strong> Mais de 400 motoristas dormiram ao volante...</p>
+      <label><input type="radio" name="q1" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q1" value="F"> Falso</label>
+    </div>
+    <div class="pergunta">
+      <p><strong>2.</strong> Os acidentes nas rodovias federais aumentaram 14%...</p>
+      <label><input type="radio" name="q2" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q2" value="F"> Falso</label>
+    </div>
+    <div class="pergunta">
+      <p><strong>3.</strong> Sonolência ao volante não representa risco...</p>
+      <label><input type="radio" name="q3" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q3" value="F"> Falso</label>
+    </div>
+    <div class="pergunta">
+      <p><strong>4.</strong> Sonolência compromete o tempo de reação...</p>
+      <label><input type="radio" name="q4" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q4" value="F"> Falso</label>
+    </div>
+    <div class="pergunta">
+      <p><strong>5.</strong> Em 2024, a BR-101 foi a rodovia com mais acidentes...</p>
+      <label><input type="radio" name="q5" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q5" value="F"> Falso</label>
+    </div>
+
+    <!-- Perguntas 6 a 10 -->
+    <div class="pergunta">
+      <p><strong>6.</strong> Todos os carros no Brasil têm sistema de detecção de cansaço...</p>
+      <label><input type="radio" name="q6" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q6" value="F"> Falso</label>
+    </div>
+    <div class="pergunta">
+      <p><strong>7.</strong> Projeto quer levar essa tecnologia a carros antigos...</p>
+      <label><input type="radio" name="q7" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q7" value="F"> Falso</label>
+    </div>
+    <div class="pergunta">
+      <p><strong>8.</strong> Carros antes de 2000 têm esse sistema...</p>
+      <label><input type="radio" name="q8" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q8" value="F"> Falso</label>
+    </div>
+    <div class="pergunta">
+      <p><strong>9.</strong> O sistema desacelera se o motorista dorme...</p>
+      <label><input type="radio" name="q9" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q9" value="F"> Falso</label>
+    </div>
+    <div class="pergunta">
+      <p><strong>10.</strong> Detecção de cansaço surgiu com carros de luxo...</p>
+      <label><input type="radio" name="q10" value="V" required> Verdadeiro</label>
+      <label><input type="radio" name="q10" value="F"> Falso</label>
+    </div>
+
+    <button type="submit">🚀 Finalizar Quiz</button>
+  </form>
+
+  <!-- Contêiner de pontos de interrogação -->
+  <div class="pontos-interrogacao">
+    <div class="ponto">?</div>
+    <div class="ponto">?</div>
+    <div class="ponto">?</div>
+    <div class="ponto">?</div>
+    <div class="ponto">?</div>
   </div>
 
-  <footer>
-    <div>&copy; 2025 - Projeto AI - Programador de Sistemas - SENAI Videira</div>
-  </footer>
-
-  <script>
-    const todasPerguntas = [
-      { texto: "Mais de 400 motoristas dormiram ao volante...", resposta: "V" },
-      { texto: "Os acidentes nas rodovias federais aumentaram 14%...", resposta: "V" },
-      { texto: "Sonolência ao volante não representa risco...", resposta: "F" },
-      { texto: "Sonolência compromete o tempo de reação...", resposta: "V" },
-      { texto: "Em 2024, a BR-101 foi a rodovia com mais acidentes...", resposta: "V" },
-      { texto: "Todos os carros no Brasil têm sistema de detecção de cansaço...", resposta: "F" },
-      { texto: "Projeto quer levar essa tecnologia a carros antigos...", resposta: "V" },
-      { texto: "Carros antes de 2000 têm esse sistema...", resposta: "F" },
-      { texto: "O sistema desacelera se o motorista dorme...", resposta: "V" },
-      { texto: "Detecção de cansaço surgiu com carros de luxo...", resposta: "V" },
-      { texto: "Direção Segura quer salvar vidas com tecnologia...", resposta: "V" },
-      { texto: "Sistema só analisa o volante, não o motorista...", resposta: "F" },
-      { texto: "O projeto visa segurança para todos motoristas...", resposta: "V" },
-      { texto: "Carros modernos já salvam vidas com essa tech...", resposta: "V" },
-    ];
-
-    const quizContainer = document.getElementById("quiz-container");
-    const pontuacaoDiv = document.getElementById("pontuacao");
-    const barra = document.getElementById("barra");
-    const restartBtn = document.getElementById("restart");
-
-    todasPerguntas.forEach((p, i) => {
-      const div = document.createElement("div");
-      div.classList.add("pergunta");
-      div.id = `pergunta-${i}`;
-      div.innerHTML = `
-        <p><strong>${i + 1}.</strong> ${p.texto}</p>
-        <label><input type="radio" name="q${i}" value="V" required> Verdadeiro</label>
-        <label><input type="radio" name="q${i}" value="F"> Falso</label>
-      `;
-      quizContainer.appendChild(div);
-    });
-
-    document.getElementById("quiz-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      let pontos = 0;
-      todasPerguntas.forEach((p, i) => {
-        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
-        const div = document.getElementById(`pergunta-${i}`);
-        if (resposta.value === p.resposta) {
-          div.classList.add("correta");
-          pontos++;
-        } else {
-          div.classList.add("errada");
-        }
-      });
-
-      const porcentagem = Math.round((pontos / todasPerguntas.length) * 100);
-      pontuacaoDiv.innerHTML = `💯 Acertos: <strong>${pontos}</strong> de ${todasPerguntas.length} (${porcentagem}%)`;
-      barra.style.width = `${porcentagem}%`;
-
-      this.querySelectorAll("input").forEach(i => i.disabled = true);
-      this.querySelector("button").disabled = true;
-      restartBtn.style.display = "block";
-    });
-
-    restartBtn.addEventListener("click", () => {
-      location.reload();
-    });
-  </script>
 </body>
 </html>
