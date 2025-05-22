@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GEOLOCALIZADOR - Resolução de Problemas</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="header" style="display: block;">
+    <h1>GEOLOCALIZADOR VIDEFRIGO</h1>
+  </div>
+
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="visaosegura.html">Visão Segura</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="sistsolar.html">Sistema Solar</a>
+</div>
+
+  <div class="content" style="display: block;">
+
+    <div id="motivo" class="section">
+      <h2>🛑 Motivo do Projeto</h2>
+      <p>
+        Esse projeto teve início após a identificação de um problema na empresa, onde a tal empresa tem sites de avaliação de satisfação para cada uma de suas filiais, esse incômodo estava ocorrendo porque cada filial tem seu próprio link, e com isso, tinha o problema de uma das filiais pedir o link para a outra, ocasionando que respondam na avaliação da filial que mandou, ao invés de ser na desejada. 
+      </p>
+    </div>
+
+    <div id="objetivo" class="section">
+      <h2>🎯 Objetivo do Projeto</h2>
+      <p>
+        Sabendo disso, decidimos resolver este aperto, realizando um script que identifica a geolocalização pelo navegador, comparando com as coordenadas geográficas de cada filial (Latitude e Longitude), fazendo um cálculo que retorna a distância que é permitida para habilitar uma função. Com base nessa informação, exibir ou ocultar botões com links específicos para diferentes cidades. Isso permite restringir ações a usuários localizados dentro de um raio de até 20 km de locais previamente definidos, usando apenas tecnologias nativas do navegador, sem dependência de servidores externos ou bancos de dados.
+      </p>
+    </div>
+
+    <div id="ideia" class="section">
+      <h2>💡 Ideia do Projeto</h2>
+      <p>
+        A ideia foi utilizar a Geolocation API do navegador para obter as coordenadas do usuário e calcular a distância entre ele e um conjunto de cidades, utilizando a fórmula de Haversine. Quando a distância for menor ou igual a 20 km, o botão correspondente à cidade é exibido. Cada botão leva o usuário a um link do Google Maps para aquela localidade.
+        Essa lógica é aplicada inteiramente no front-end, usando HTML, CSS e JavaScript puro. O sistema garante privacidade ao não armazenar nem transmitir dados de localização, tornando-o seguro, leve e eficiente.
+      </p>
+    </div>
+
+    <div id="necessidade" class="section">
+      <h2>🚗 Por que esse projeto é importante?</h2>
+      <p>
+        Este projeto é importante porque oferece uma solução simples e eficaz para controlar o acesso a conteúdos com base na localização do usuário, sem comprometer a privacidade. Como não coleta nem armazena dados pessoais, ele garante segurança e respeito ao usuário.
+      </p>
+     
+    </div>
+
+  <footer style="display: block;">
+    <div>&copy; 2025 - Projeto GEOLOCALIZADOR - Videfrigo</div>
+  </footer>
+
+</body>
+</html>
