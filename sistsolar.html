@@ -3,109 +3,188 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DIREÇÃO SEGURA - Prevenção de Acidentes</title>
+  <title>SISTEMA SOLAR ☀️</title>
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-    <link rel="stylesheet" href="style.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    body {
+      font-family: "Verdana", "Geneva", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #000000, #0d1b2a);
+      color: #c0d6ff;
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .header {
+      background: linear-gradient(90deg, #001f3f, #000000);
+      color: #7ecfff;
+      padding: 30px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+      transition: all 0.5s;
+    }
+    .header:hover {
+      transform: scale(1.02);
+    }
+    .nav {
+      background-color: #000814;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav a {
+      color: #7ecfff;
+      padding: 16px 20px;
+      text-decoration: none;
+      font-size: 17px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .nav a:hover {
+      background-color: #001f3f;
+      transform: translateY(-2px);
+    }
+    .content {
+      padding: 30px;
+      background-color: #001220;
+      margin: 0 auto;
+      max-width: 1000px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 50, 0.4);
+      animation: fadeInUp 0.8s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      color: #98e6ff;
+      border-bottom: 3px solid #6fbaff;
+      padding-bottom: 10px;
+      font-size: 26px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .section h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: #00bfff;
+    }
+    a {
+      color: #49a3ff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #2d8be0;
+    }
+    footer {
+      background-color: #000814;
+      color: #8cbfff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+      user-select: none;
+    }
+    @media screen and (max-width: 768px) {
+      .content {
+        margin: 20px 15px;
+        padding: 20px;
+      }
+      .section h2 {
+        font-size: 22px;
+      }
+      .nav {
+        flex-direction: column;
+      }
+      .nav a {
+        padding: 12px 10px;
+        font-size: 16px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      .header {
+        font-size: 22px;
+        padding: 20px 10px;
+      }
+      .content {
+        padding: 15px;
+      }
+      .section h2 {
+        font-size: 20px;
+      }
+      .nav a {
+        padding: 10px 8px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="modal">
-    <div id="modalContent">
-      <h2>Deseja acessar nosso site?</h2>
-      <button id="btnYes">Sim</button>
-      <button id="btnNo">Não</button>
-    </div>
+
+  <div class="header">
+    <h1>PROJETO SISTEMA SOLAR 🌌</h1>
   </div>
 
-  <div class="header" style="display:none;">
-    <h1>DIREÇÃO SEGURA</h1>
+  <div class="nav">
+    <a href="#motivo"><i class="fas fa-exclamation-triangle"></i> Motivo</a>
+    <a href="#objetivo"><i class="fas fa-bullseye"></i> Objetivo</a>
+    <a href="#publico"><i class="fas fa-users"></i> Público</a>
+    <a href="#desenvolvimento"><i class="fas fa-rocket"></i> Desenvolvimento</a>
   </div>
 
-  <div class="nav" style="display:none;">
-    <a href="visaosegura.html">Visao Segura</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="sistsolar.html">Sistema Solar</a>
-
-  </div>
-
-  <div class="content" style="display:none;">
+  <div class="content">
     <div id="motivo" class="section">
-      <h2>🛑 Motivo do Projeto</h2>
+      <h2>Motivo do Projeto 🌞</h2>
       <p>
-        Mais de 400 motoristas dormiram ao volante e causaram acidentes nas rodovias de Santa Catarina entre janeiro de 2021 e abril de 2023, segundo a Polícia Rodoviária Federal (PRF). Esses acidentes resultaram em 26 mortes e 510 feridos, o que representa uma morte a cada 20 colisões
-        (Fonte: NSC Total / PRF).
-        Em 2024, os acidentes nas rodovias federais do estado aumentaram ainda mais. Foram registrados 8.374 acidentes, com 415 mortes e 9.526 feridos, um crescimento de 14% nas mortes em relação a 2023. A rodovia com mais ocorrências foi a BR-101, seguida da BR-282 e BR-470
-        (Fonte: Clic RDC / PRF-SC).
-        Grande parte desses acidentes está relacionada à sonolência ao volante, que compromete o tempo de reação, a atenção e a tomada de decisões rápidas, aumentando o risco de colisões graves.
+        Muitos alunos acham difícil ou desinteressante aprender sobre astronomia, pois os materiais costumam ser muito teóricos e pouco atrativos. Faltam ferramentas que tornem esse conteúdo mais acessível, visual e divertido.
       </p>
-      <img
-        src="https://wh3.com.br/galerias/noticias/640/232427090518_capturadetela20230524as22.27.01.png"
-        alt="Estatísticas de acidentes em SC"
-      />
     </div>
 
     <div id="objetivo" class="section">
-      <h2>🎯 Objetivo do Projeto</h2>
+      <h2>O Projeto 🌠</h2>
       <p>
-        Pensando nesse problema, desenvolvemos o DIREÇÃO SEGURA, um sistema inteligente com sensores de biometria ocular. O dispositivo detecta em tempo real sinais de cansaço, como o fechamento e enfraquecimento do olhar. Com a detecção, o carrinho desacelera e/ou para automaticamente. Se o motorista estiver alerta, o sistema permite que o veículo siga normalmente. Servindo para aumentar a segurança e prevenir acidentes causados pelo sono
+        Nosso projeto é sobre o Sistema Solar. Criamos um programa que mostra os planetas em 2D, de forma divertida. Quando clicamos em um planeta, ele exibe suas principais características, como tamanho, composição e distância do Sol. A ideia é tornar o aprendizado mais interessante e interativo.
       </p>
     </div>
 
-    <div id="ideia" class="section">
-      <h2>💡 Ideia do Projeto</h2>
+    <div id="publico" class="section">
+      <h2>O Público-Alvo 🌝</h2>
       <p>
-        Nosso objetivo é levar esse tipo de recurso para todos os motoristas, incluindo os que possuem carros menos tecnológicos. Com um sistema acessível e eficiente, o Direção Segura pretende salvar vidas e promover mais segurança no trânsito para todos.
+        O projeto é direcionado principalmente a estudantes do ensino fundamental e médio, com foco em alunos de escolas públicas e privadas que estejam em fase de introdução aos conteúdos de astronomia.
       </p>
     </div>
 
-    <div id="referencias" class="section">
-      <h2>🔍 Referências / Fontes de Informação</h2>
-      <ul>
-        <li>
-          <a
-            href="https://wh3.com.br/noticia/244196/mais-de-400-motoristas-dormiram-ao-volante-e-causaram-acidentes-em-sc-nos-ultimos-dois-anos-.html"
-            target="_blank"
-            >NSC Total / PRF</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.clicrdc.com.br/seguranca/prf-em-sc-divulga-balanco-de-acidentes-e-operacoes-em-2024/"
-            target="_blank"
-            >ClicRDC / PRF-SC</a
-          >
-        </li>
-      </ul>
+    <div id="desenvolvimento" class="section">
+      <h2>Desenvolvimento 🌌</h2>
+      <p>
+        Começamos pesquisando informações sobre os planetas e utilizamos imagens para representá-los. Usamos linguagens como HTML, CSS e JavaScript para montar a aplicação. Também adicionamos a função de mostrar os dados ao clicar em cada planeta. Por fim, testamos o programa para garantir que ele funcionasse corretamente e fosse fácil de usar.
+      </p>
     </div>
   </div>
 
-  <footer style="display:none;">
-    <div>&copy; 2025 - Projeto DIREÇÃO SEGURA - SENAI Videira</div>
+  <footer>
+    <div>&copy; 2025 - Projeto Sistema Solar - SENAI Videira</div>
   </footer>
 
-  <script>
-    const modal = document.getElementById("modal");
-    const btnYes = document.getElementById("btnYes");
-    const btnNo = document.getElementById("btnNo");
-
-    btnYes.addEventListener("click", () => {
-      modal.style.display = "none";
-      document.querySelector(".header").style.display = "block";
-      document.querySelector(".nav").style.display = "flex";
-      document.querySelector(".content").style.display = "block";
-      document.querySelector("footer").style.display = "block";
-    });
-
-    btnNo.addEventListener("click", () => {
-      // Aqui pode colocar o redirecionamento, ou fechar aba. Exemplo:
-      // redireciona para google
-      window.location.href = "https://www.google.com";
-      // Ou fechar aba (não funciona em todos os navegadores)
-      // window.close();
-    });
-  </script>
 </body>
 </html>
-
-    

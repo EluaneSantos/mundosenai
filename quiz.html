@@ -2,51 +2,147 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Quiz Interativo: Lógica e Python (V/F)</title>
+  <title> Quiz:PROGRAMADOR DE SISTEMAS (V/F)</title>
   <style>
-    /* estilos mantidos como estão - tão show! */
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(to right, #e0f7ff, #ffffff);
+      color: #002b5e;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      text-align: center;
+      color: #0047ab;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .pergunta {
+      background: #ffffffcc;
+      border: 2px solid #0077cc;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 18px 0;
+      box-shadow: 2px 2px 10px #d6eaf8;
+      transition: 0.3s;
+    }
+
+    .pergunta.correta {
+      border-color: #00b894;
+      background-color: #e0fff5;
+    }
+
+    .pergunta.errada {
+      border-color: #d63031;
+      background-color: #ffeaea;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    button {
+      display: block;
+      margin: 25px auto;
+      background-color: #0047ab;
+      color: white;
+      font-weight: bold;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #0066cc;
+      transform: scale(1.05);
+    }
+
+    #pontuacao {
+      text-align: center;
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    #barra-progresso {
+      width: 100%;
+      height: 25px;
+      background-color: #ccc;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 10px;
+      box-shadow: inset 0 1px 3px #999;
+    }
+
+    #barra {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #00c3ff, #0055aa);
+      transition: width 1s ease-out;
+    }
+
+    #restart {
+      display: none;
+      margin-top: 20px;
+      background-color: #888;
+    }
+
+    #restart:hover {
+      background-color: #555;
+    }
   </style>
 </head>
 <body>
-
-  <h1>Quiz Interativo: Lógica, Algoritmos e Python (V/F)</h1>
-
-  <form id="formulario" data-bloqueado="false">
-    <div id="perguntas-container"></div>
-    <button type="submit">✅ Enviar Respostas</button>
+  <h1>🧠 Desafio V/F: Lógica e Python</h1>
+  <form id="quiz-form">
+    <div id="quiz-container"></div>
+    <button type="submit">🚀 Finalizar Quiz</button>
   </form>
-
-  <div id="mensagem-encerrada"></div>
-  <div id="pontuacao-barra"><div id="barra"></div></div>
-  <button id="reiniciar">🔁 Tentar Novamente</button>
+  <div id="pontuacao"></div>
+  <div id="barra-progresso"><div id="barra"></div></div>
+  <button id="restart">🔁 Tentar de Novo</button>
 
   <script>
-    const todasPerguntas = [
-      { texto: "Mais de 400 motoristas dormiram ao volante e causaram acidentes nas rodovias de Santa Catarina entre janeiro de 2021 e abril de 2023.", resposta: "V" },
-      { texto: "Os acidentes nas rodovias federais de Santa Catarina em 2024 tiveram um aumento de 14% nas mortes em relação a 2023.", resposta: "V" },
-      { texto: "Os acidentes de trânsito relacionados à sonolência ao volante não representam risco significativo para a segurança nas rodovias.", resposta: "F" },
-      { texto: "A sonolência ao volante compromete o tempo de reação, a atenção e a tomada de decisões rápidas, aumentando o risco de colisões graves.", resposta: "V" },
-      { texto: "Em 2024, a BR-101 foi a rodovia com mais acidentes em Santa Catarina.", resposta: "V" },
-      { texto: "O sistema de detecção de cansaço é um recurso presente em todos os carros fabricados no Brasil.", resposta: "F" },
-      { texto: "A ideia do projeto é tornar a tecnologia de detecção de sonolência acessível a motoristas de veículos mais antigos.", resposta: "V" },
-      { texto: "Carros fabricados antes de 2000 geralmente possuem sistemas de detecção de fadiga.", resposta: "F" },
-      { texto: "O sistema de detecção de cansaço do projeto desacelera ou para o veículo automaticamente caso o motorista esteja com sinais de sonolência.", resposta: "V" },
-      { texto: "A tecnologia de detecção de cansaço é um recurso que surgiu com os carros de luxo após os anos 2000.", resposta: "V" },
-      { texto: "O projeto Direção Segura pretende salvar vidas ao levar a tecnologia de detecção de cansaço a motoristas com veículos menos tecnológicos.", resposta: "V" },
-      { texto: "O sistema de detecção de cansaço detecta apenas o movimento do volante, sem verificar os sinais do motorista.", resposta: "F" },
-      { texto: "O Direção Segura é um projeto que visa aumentar a segurança nas rodovias por meio de tecnologia acessível para todos os motoristas.", resposta: "V" },
-      { texto: "Em carros modernos, a tecnologia de detecção de fadiga é uma inovação que já salva muitas vidas.", resposta: "V" },
-      { texto: "O JavaScript não é utilizado para criar interatividade nas páginas da web.", resposta: "F" },
-      { texto: "O HTML é responsável pela estrutura e conteúdo de uma página web.", resposta: "V" },
-      { texto: "O CSS é utilizado para criar a interatividade nas páginas web.", resposta: "F" }
+    const perguntas = [
+      { texto: "Python é uma linguagem interpretada e de alto nível.", resposta: "V" },
+      { texto: "'if' é usado para repetir códigos em Python.", resposta: "F" },
+      { texto: "A palavra-chave 'def' serve para definir funções.", resposta: "V" },
+      { texto: "Em algoritmos, variáveis são constantes.", resposta: "F" },
+      { texto: "Python usa indentacão para definir blocos de código.", resposta: "V" },
+      { texto: "'print()' serve para receber dados do usuário.", resposta: "F" },
+      { texto: "'input()' permite entrada de dados no programa.", resposta: "V" },
+      { texto: "'True' e 'False' são tipos de valores booleanos.", resposta: "V" },
+      { texto: "'for' é usado para condicional e não repetição.", resposta: "F" },
+      { texto: "Algoritmos podem ser representados por pseudocódigo.", resposta: "V" }
     ];
 
-    const perguntasSelecionadas = [...todasPerguntas]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 10);
+    const quizContainer = document.getElementById("quiz-container");
+    const pontuacaoDiv = document.getElementById("pontuacao");
+    const barra = document.getElementById("barra");
+    const restartBtn = document.getElementById("restart");
 
-    const container = document.getElementById("perguntas-container");
-    perguntasSelecionadas.forEach((p, i) => {
+    perguntas.forEach((p, i) => {
       const div = document.createElement("div");
       div.classList.add("pergunta");
       div.id = `pergunta-${i}`;
@@ -55,65 +151,35 @@
         <label><input type="radio" name="q${i}" value="V" required> Verdadeiro</label>
         <label><input type="radio" name="q${i}" value="F"> Falso</label>
       `;
-      container.appendChild(div);
+      quizContainer.appendChild(div);
     });
 
-    const formulario = document.getElementById("formulario");
-    const mensagemEncerrada = document.getElementById("mensagem-encerrada");
-    const barra = document.getElementById("barra");
-    const pontuacaoBarra = document.getElementById("pontuacao-barra");
-    const reiniciar = document.getElementById("reiniciar");
-    const inicio = localStorage.getItem("quizIniciado") ? parseInt(localStorage.getItem("quizIniciado")) : Date.now();
-    localStorage.setItem("quizIniciado", inicio);
-
-    if (localStorage.getItem("quizRespondido") === "true") {
-      bloquearFormulario();
-    }
-
-    formulario.addEventListener("submit", function (e) {
+    document.getElementById("quiz-form").addEventListener("submit", function (e) {
       e.preventDefault();
-      if (localStorage.getItem("quizRespondido") === "true") return;
-
       let pontos = 0;
-      perguntasSelecionadas.forEach((p, i) => {
+      perguntas.forEach((p, i) => {
         const resposta = document.querySelector(`input[name="q${i}"]:checked`);
         const div = document.getElementById(`pergunta-${i}`);
         if (resposta.value === p.resposta) {
-          pontos++;
           div.classList.add("correta");
+          pontos++;
         } else {
           div.classList.add("errada");
         }
       });
 
-      const porcentagem = Math.round((pontos / perguntasSelecionadas.length) * 100);
-      const tempo = Math.floor((Date.now() - inicio) / 1000);
-      mensagemEncerrada.textContent = `🎉 Você acertou ${pontos} de ${perguntasSelecionadas.length} (${porcentagem}%) em ${tempo} segundos.`;
-      mensagemEncerrada.style.display = "block";
+      const porcentagem = Math.round((pontos / perguntas.length) * 100);
+      pontuacaoDiv.innerHTML = `💯 Acertos: <strong>${pontos}</strong> de ${perguntas.length} (${porcentagem}%)`;
       barra.style.width = `${porcentagem}%`;
-      pontuacaoBarra.style.display = "block";
 
-      bloquearFormulario();
-      localStorage.setItem("quizRespondido", "true");
+      this.querySelectorAll("input").forEach(i => i.disabled = true);
+      this.querySelector("button").disabled = true;
+      restartBtn.style.display = "block";
     });
 
-    function bloquearFormulario() {
-      formulario.querySelectorAll("input[type=radio]").forEach(el => el.disabled = true);
-      formulario.querySelector("button[type=submit]").disabled = true;
-      reiniciar.style.display = "block";
-    }
-
-    reiniciar.addEventListener("click", () => {
-      const senha = prompt("Digite a senha para tentar novamente:");
-      if (senha === "senai1234") {
-        localStorage.removeItem("quizRespondido");
-        localStorage.removeItem("quizIniciado");
-        location.reload();
-      } else {
-        alert("Senha incorreta. Você não pode reiniciar o quiz.");
-      }
+    restartBtn.addEventListener("click", () => {
+      location.reload();
     });
   </script>
-
 </body>
 </html>
